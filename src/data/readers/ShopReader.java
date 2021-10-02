@@ -105,7 +105,7 @@ public class ShopReader {
         String[] splitNames = cell.getStringCellValue().split(",");
 
         for (String s : splitNames) {
-            Item it = Item.getFromMasterByName(s);
+            Item it = Item.getFromMasterByName(s.trim());
             stock.add(it);
         }
         return stock;

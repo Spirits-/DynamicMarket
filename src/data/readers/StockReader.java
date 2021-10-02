@@ -61,7 +61,7 @@ public class StockReader {
         String cellVal = cell.getStringCellValue();
         boolean isStringName = isStringName(cellVal);
         if (isStringName) {
-            builder.setName(cellVal);
+            builder.setName(cellVal.trim());
         } else {
             boolean multipleRolls = cellVal.equalsIgnoreCase("yes");
             builder.setMultipleRolls(multipleRolls);

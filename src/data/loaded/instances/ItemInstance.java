@@ -7,7 +7,7 @@ import java.util.Objects;
 public class ItemInstance {
 
     private final Item type;
-    private final int amount;
+    private int amount;
 
     public ItemInstance(Item type, int amount) {
         this.type = type;
@@ -33,6 +33,10 @@ public class ItemInstance {
         if (o == null || getClass() != o.getClass()) return false;
         ItemInstance that = (ItemInstance) o;
         return Objects.equals(type, that.type); //amount shouldn't matter for two Item instances to be the same.
+    }
+
+    public void increaseAmount(int i) {
+        amount += i;
     }
 
     @Override

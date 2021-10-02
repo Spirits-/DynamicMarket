@@ -10,6 +10,10 @@ public record Item(String name, boolean multipleRolls, int minRollBound, int max
      private static final List<Item> wonders = new ArrayList<>();
      private static final List<Item> necklace = new ArrayList<>();
 
+     public static final String STRANGE_ITEM_CODE = "StrangeRoll";
+     public static final String GEMSTONE_CARVING_CODE = "gemstone carving";
+     public static final String WONDERS_ITEM_CODE = "WondrousRoll";
+
      public static List<Item> getMaster() {
           return master;
      }
