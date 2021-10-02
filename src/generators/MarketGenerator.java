@@ -21,13 +21,15 @@ public class MarketGenerator {
 
     public List<ShopInstance> generateMarket(Region region) {
         List<ShopInstance> result = new ArrayList<>();
+        List<Shop> shopsList = new ArrayList<>(Shop.getGlobalShops());
         for (int i = 0; i < MARKET_NUM; i++) {
-            int shopChoice = getRandomIntInBounds(0, Shop.getGlobalShops().size() - 1);
-            Shop shop = Shop.getGlobalShops().get(shopChoice);
+            int shopChoice = getRandomIntInBounds(0, shopsList.size() - 1);
+            Shop shop = shopsList.get(shopChoice);
             if (shop.name().equalsIgnoreCase("none")) {
                 continue;
             }
             result.add(generateStall(region, shop));
+            shopsList.remove(shopChoice);
         }
         return result;
     }
