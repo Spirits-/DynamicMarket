@@ -56,7 +56,8 @@ public enum Region {
         throw new IllegalArgumentException("Region string not recognized!");
     }
     public static Region fromCharacter(char c) {
-        return switch (c) {
+        char cUp = Character.toUpperCase(c);
+        return switch (cUp) {
             case 'P' -> PAPERKIND;
             case 'D' -> DUSGAR;
             case 'M' -> MIRRIMAM;
