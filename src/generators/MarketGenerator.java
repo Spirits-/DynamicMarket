@@ -13,7 +13,7 @@ import java.util.Random;
 public class MarketGenerator {
 
     private final Random random;
-    private static final int MARKET_NUM = 5;
+    private static final int MARKET_NUM = 4;
 
     public MarketGenerator() {
         random = new Random();
