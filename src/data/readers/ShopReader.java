@@ -81,7 +81,7 @@ public class ShopReader {
         Map<Region, List<Item>> result = new HashMap<>();
         int currentColumn = 0;
         for (Cell c : row) {
-            if (currentColumn <= targetColumn) {
+            if (currentColumn < targetColumn) {
                 currentColumn += c.getColumnIndex();
                 continue;
             }

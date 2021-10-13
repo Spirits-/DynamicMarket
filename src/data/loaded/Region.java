@@ -55,6 +55,7 @@ public enum Region {
         }
         throw new IllegalArgumentException("Region string not recognized!");
     }
+
     public static Region fromCharacter(char c) {
         char cUp = Character.toUpperCase(c);
         return switch (cUp) {
@@ -76,5 +77,10 @@ public enum Region {
             case 'F' -> FLAMKA;
             default -> null;
         };
+    }
+
+    public static boolean isViableLetter(char c) {
+        Region result = fromCharacter(c);
+        return result != null;
     }
 }

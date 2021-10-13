@@ -19,7 +19,7 @@ public class MarketGenerator {
         random = new Random();
     }
 
-    public List<ShopInstance> generateMarket(Region region) {
+    public List<ShopInstance> generateMarket(List<Region> regions) {
         List<ShopInstance> result = new ArrayList<>();
         List<Shop> shopsList = new ArrayList<>(Shop.getGlobalShops());
         for (int i = 0; i < MARKET_NUM; i++) {
@@ -28,14 +28,14 @@ public class MarketGenerator {
             if (shop.name().equalsIgnoreCase("none")) {
                 continue;
             }
-            result.add(generateStall(region, shop));
+            result.add(generateStall(regions, shop));
             shopsList.remove(shopChoice);
         }
         return result;
     }
 
-    private ShopInstance generateStall(Region region, Shop shop) {
-        List<Item> possibleProduce = getPossibleProduce(region, shop);
+    private ShopInstance generateStall(List<Region> regions, Shop shop) {
+        List<Item> possibleProduce = getPossibleProduce(regions, shop);
         List<ItemInstance> actualStock = new ArrayList<>();
         for (int i = 0; i < shop.itemRolls(); i++) {
             ItemInstance it = generateItemInstance(possibleProduce);
@@ -91,8 +91,11 @@ public class MarketGenerator {
         };
     }
 
-    private List<Item> getPossibleProduce(Region region, Shop shop) {
-        List<Item> regionalStock = shop.regionalStock().get(region);
+    private List<Item> getPossibleProduce(List<Region> regions, Shop shop) {
+        List<Item> regionalStock = new ArrayList<>();
+        for (Region r : regions) {
+            regionalStock.addAll(shop.regionalStock().get(r));
+        }
         if (regionalStock.isEmpty()) {
             return shop.globalStock();
         }
