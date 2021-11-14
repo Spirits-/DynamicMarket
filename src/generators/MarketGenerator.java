@@ -26,10 +26,11 @@ public class MarketGenerator {
             int shopChoice = getRandomIntInBounds(0, shopsList.size() - 1);
             Shop shop = shopsList.get(shopChoice);
             if (shop.name().equalsIgnoreCase("none")) {
+                shopsList.remove(shop);
                 continue;
             }
             result.add(generateStall(regions, shop));
-            shopsList.remove(shopChoice);
+            shopsList.remove(shop);
         }
         return result;
     }
