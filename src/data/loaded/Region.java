@@ -16,7 +16,12 @@ public enum Region {
     TRALARRY,
     COAR,
     GRANVIDAS,
-    FLAMKA;
+    FLAMKA,
+    DYOIST,
+    GRYIST,
+    NYUIST,
+    PHOIST,
+    ELVEN;
 
     public static Region fromString(String nameString) {
         String name = nameString.toLowerCase();
@@ -52,6 +57,16 @@ public enum Region {
             return GRANVIDAS;
         } else if (name.equals(FLAMKA.name().toLowerCase())) {
             return FLAMKA;
+        } else if (name.equals(DYOIST.name().toLowerCase())) {
+            return DYOIST;
+        } else if (name.equals(GRYIST.name().toLowerCase())) {
+            return GRYIST;
+        } else if (name.equals(NYUIST.name().toLowerCase())) {
+            return NYUIST;
+        } else if (name.equals(PHOIST.name().toLowerCase())) {
+            return PHOIST;
+        } else if (name.equals("elven region")) {
+            return ELVEN;
         }
         throw new IllegalArgumentException("Region string not recognized!");
     }
@@ -75,6 +90,11 @@ public enum Region {
             case 'C' -> COAR;
             case 'G' -> GRANVIDAS;
             case 'F' -> FLAMKA;
+            case 'I' -> DYOIST;
+            case 'R' -> GRYIST;
+            case 'N' -> NYUIST;
+            case 'H' -> PHOIST;
+            case 'V' -> ELVEN;
             default -> null;
         };
     }

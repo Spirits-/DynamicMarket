@@ -53,7 +53,9 @@ public class Main {
             switch (choice) {
                 case 0 -> System.exit(0);
                 case 1 -> {
-                    System.out.println("Select a region: \n (P)aperkind, (D)usgar, (M)irrimam, Ba(Z)aar, (Y)ackrix, (S)hattered Island, (U)underix, (O)rterix, (A)scensia, (B)aktix, (W)ortsmar, (K)roaka, (T)ralarry, (C)oar, (G)ranvidas, (F)lamka");
+                    System.out.println("Select a region: \n (P)aperkind, (D)usgar, (M)irrimam, Ba(Z)aar, (Y)ackrix, (S)hattered Island, " +
+                            "(U)underix, (O)rterix, (A)scensia, (B)aktix, (W)ortsmar, (K)roaka, (T)ralarry, (C)oar, (G)ranvidas, (F)lamka, " +
+                            "Dy(I)oist, G(R)yist, (N)yuist, P(H)oist, El(V)en Region");
                     String input = consoleInput.readLine();
                     List<Region> regs = readRegionsFromInput(input);
                     System.out.println("Region(s) selected: " + Arrays.toString(regs.toArray()));
