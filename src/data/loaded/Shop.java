@@ -2,12 +2,13 @@ package data.loaded;
 
 import java.util.*;
 
-public record Shop (String name, List<Item> globalStock, Map<Region, List<Item>> regionalStock, int itemRolls) {
+public record Shop(String name, List<Item> globalStock, Map<Region, List<Item>> regionalStock, int itemRolls,
+                   List<Region> allowedRegions) {
 
     private static final List<Shop> globalShops = new ArrayList<>();
 
     public Shop {
-        if(regionalStock == null) {
+        if (regionalStock == null) {
             regionalStock = new HashMap<>();
         }
         for (Region r : Region.values()) {
@@ -29,7 +30,6 @@ public record Shop (String name, List<Item> globalStock, Map<Region, List<Item>>
         }
         return false;
     }
-
 
 
     @Override
@@ -61,6 +61,7 @@ public record Shop (String name, List<Item> globalStock, Map<Region, List<Item>>
         List<Item> globalStock;
         Map<Region, List<Item>> regionalStock;
         int itemRolls;
+        List<Region> allowedRegions;
 
         public Builder setName(String name) {
             this.name = name;
@@ -82,10 +83,13 @@ public record Shop (String name, List<Item> globalStock, Map<Region, List<Item>>
             return this;
         }
 
-
+        public Builder setAllowedRegions(List<Region> allowedRegions) {
+            this.allowedRegions = allowedRegions;
+            return this;
+        }
 
         public Shop build() {
-            return new Shop(name, globalStock, regionalStock, itemRolls);
+            return new Shop(name, globalStock, regionalStock, itemRolls, allowedRegions);
         }
     }
 }

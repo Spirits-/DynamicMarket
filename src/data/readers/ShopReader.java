@@ -9,10 +9,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShopReader {
 
@@ -49,8 +46,9 @@ public class ShopReader {
 
         final int shopName = 0;
         final int globalStock = 1;
-        final int itemRolls = 2;
-        final int regionalStock = 3;
+        final int allowedRegions = 2;
+        final int itemRolls = 3;
+        final int regionalStock = 4;
 
         for (Cell cell : row) {
             switch (cell.getColumnIndex()) {
@@ -60,14 +58,16 @@ public class ShopReader {
                                 .setItemRolls(-1)
                                 .setGlobalStock(new ArrayList<>())
                                 .setRegionalStock(new HashMap<>())
+                                .setAllowedRegions(new ArrayList<>())
                                 .build();
                     } else {
                         builder.setName(cell.getStringCellValue());
                     }
                 }
                 case globalStock -> builder.setGlobalStock(getPossibleStockFromCell(cell));
+                case allowedRegions -> builder.setAllowedRegions(getPossibleRegionsFromCell(cell));
                 case itemRolls -> builder.setItemRolls((int) cell.getNumericCellValue());
-                case regionalStock, 4, 5, 6, 7, 8, 9, 10 -> {
+                case regionalStock, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 -> {
                     builder.setRegionalStock(readRegionalStock(cell.getColumnIndex(), row));
                     return builder.build();
                 }
@@ -75,6 +75,19 @@ public class ShopReader {
         }
 
         return builder.build();
+    }
+
+    private List<Region> getPossibleRegionsFromCell(Cell cell) {
+        if ("all".equalsIgnoreCase(cell.getStringCellValue())) {
+            return Arrays.asList(Region.values());
+        }
+        String content = cell.getStringCellValue();
+        String[] regionNames = content.split(",");
+        List<Region> result = new ArrayList<>(regionNames.length);
+        for (String s : regionNames) {
+            result.add(Region.fromString(s));
+        }
+        return result;
     }
 
     private Map<Region, List<Item>> readRegionalStock(int targetColumn, Row row) {

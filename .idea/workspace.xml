@@ -6,10 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e378fb7e-a50d-43f6-811e-d9e368c46f93" name="Default Changelist" comment="No shop can only be hit once per market generation.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/DynamicMarket_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="e378fb7e-a50d-43f6-811e-d9e368c46f93" name="Default Changelist" comment="Add new regions + regional stock.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DynamicMarket_old.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DynamicMarket.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/DynamicMarket.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/loaded/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/loaded/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/loaded/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/loaded/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/loaded/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/loaded/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/readers/ShopReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/readers/ShopReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/readers/StockReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/readers/StockReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generators/MarketGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generators/MarketGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +43,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/generators/MarketGenerator.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/loaded/Item.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/loaded/Region.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/loaded/Shop.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/loaded/instances/ItemInstance.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/loaded/instances/ShopInstance.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/readers/StockReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data/readers/ShopReader.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1yqx6vMALv7fVKwdFZ2nb9AZDWZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -44,29 +63,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last.edited.regexp" value="1,2, 3,4, 5, 6" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="DynamicMarket" />
@@ -86,6 +96,9 @@
       <updated>1632992747721</updated>
       <workItem from="1632992749137" duration="14217000" />
       <workItem from="1633077399271" duration="13693000" />
+      <workItem from="1637015618292" duration="301000" />
+      <workItem from="1637016125387" duration="187000" />
+      <workItem from="1638958740232" duration="229000" />
     </task>
     <task id="LOCAL-00001" summary="Add data deserialization.">
       <created>1633090670703</created>
@@ -108,7 +121,21 @@
       <option name="project" value="LOCAL" />
       <updated>1636896630036</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="config updates">
+      <created>1636897816816</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1636897816816</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add new regions + regional stock.">
+      <created>1636985241732</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636985241732</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,17 +154,29 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add data deserialization." />
     <MESSAGE value="Add option to generate Region from lowercase char" />
     <MESSAGE value="No shop can only be hit once per market generation." />
-    <option name="LAST_COMMIT_MESSAGE" value="No shop can only be hit once per market generation." />
+    <MESSAGE value="config updates" />
+    <MESSAGE value="Add new regions + regional stock." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new regions + regional stock." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/generators/MarketGenerator.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="Shop.globalShops" language="JAVA" />
+        <watch expression="Shop.getGlobalShops()" language="JAVA" custom="data.loaded.Shop" />
       </configuration>
     </watches-manager>
   </component>

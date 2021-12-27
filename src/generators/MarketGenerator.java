@@ -7,6 +7,7 @@ import data.loaded.instances.ItemInstance;
 import data.loaded.instances.ShopInstance;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ public class MarketGenerator {
 
     public List<ShopInstance> generateMarket(List<Region> regions) {
         List<ShopInstance> result = new ArrayList<>();
-        List<Shop> shopsList = new ArrayList<>(Shop.getGlobalShops());
+        List<Shop> shopsList = new ArrayList<>(getPermittedShops(regions));
         for (int i = 0; i < MARKET_NUM; i++) {
             int shopChoice = getRandomIntInBounds(0, shopsList.size() - 1);
             Shop shop = shopsList.get(shopChoice);
@@ -31,6 +32,17 @@ public class MarketGenerator {
             }
             result.add(generateStall(regions, shop));
             shopsList.remove(shop);
+        }
+        return result;
+    }
+
+    private List<Shop> getPermittedShops(List<Region> regions) {
+        List<Shop> result = new ArrayList<>();
+        result.add(Shop.getGlobalShops().get(0)); //Add the none shop.
+        for (Shop s : Shop.getGlobalShops()) {
+            if (!Collections.disjoint(s.allowedRegions(), regions)) {
+                result.add(s);
+            }
         }
         return result;
     }
@@ -79,6 +91,9 @@ public class MarketGenerator {
             case Item.STRANGE_ITEM_CODE -> generateItemInstance(Item.getStranger());
             case Item.GEMSTONE_CARVING_CODE -> generateItemInstance(Item.getNecklace());
             case Item.WONDERS_ITEM_CODE -> generateItemInstance(Item.getWonders());
+            case Item.FEATHER_CLOAKS_CODE -> generateItemInstance(Item.getFeatherCloaks());
+            case Item.ROPE_CODE -> generateItemInstance(Item.getRope());
+            case Item.TICKER_PARTS_CODE -> generateItemInstance(Item.getTickerParts());
             default -> null;
         };
     }
@@ -88,6 +103,9 @@ public class MarketGenerator {
             case Item.STRANGE_ITEM_CODE -> Item.STRANGE_ITEM_CODE;
             case Item.GEMSTONE_CARVING_CODE -> Item.GEMSTONE_CARVING_CODE;
             case Item.WONDERS_ITEM_CODE -> Item.WONDERS_ITEM_CODE;
+            case Item.FEATHER_CLOAKS_CODE -> Item.FEATHER_CLOAKS_CODE;
+            case Item.ROPE_CODE -> Item.ROPE_CODE;
+            case Item.TICKER_PARTS_CODE -> Item.TICKER_PARTS_CODE;
             default -> null;
         };
     }

@@ -21,7 +21,16 @@ public enum Region {
     GRYIST,
     NYUIST,
     PHOIST,
-    ELVEN;
+    ELVEN,
+    GHEWERK,
+    AERETHER,
+    GENIA,
+    RASKATIR,
+    CONSAKE,
+    HELTA,
+    CRISOL,
+    FASKIR,
+    TALRON;
 
     public static Region fromString(String nameString) {
         String name = nameString.toLowerCase();
@@ -67,8 +76,26 @@ public enum Region {
             return PHOIST;
         } else if (name.equals("elven region")) {
             return ELVEN;
+        } else if (name.equals(GHEWERK.name().toLowerCase())) {
+            return GHEWERK;
+        } else if (name.equals(AERETHER.name().toLowerCase())) {
+            return AERETHER;
+        } else if (name.equals(GENIA.name().toLowerCase())) {
+            return GENIA;
+        } else if (name.equals(RASKATIR.name().toLowerCase())) {
+            return RASKATIR;
+        } else if (name.equals(CONSAKE.name().toLowerCase())) {
+            return CONSAKE;
+        } else if (name.equals(HELTA.name().toLowerCase())) {
+            return HELTA;
+        } else if (name.equals(CRISOL.name().toLowerCase())) {
+            return CRISOL;
+        } else if (name.equals(FASKIR.name().toLowerCase())) {
+            return FASKIR;
+        } else if (name.equals(TALRON.name().toLowerCase())) {
+            return TALRON;
         }
-        throw new IllegalArgumentException("Region string not recognized!");
+        throw new IllegalArgumentException("Region string " + nameString + " not recognized!");
     }
 
     public static Region fromCharacter(char c) {
@@ -99,8 +126,27 @@ public enum Region {
         };
     }
 
+    public static Region fromOrdinal(int ordinal) {
+        if (ordinal < Region.values().length) {
+            return Region.values()[ordinal];
+        }
+        throw new ArrayIndexOutOfBoundsException("Please enter a number below " + Region.values().length + ". You have entered: " + ordinal);
+    }
+
+    public static String getOrdinals() {
+        StringBuilder sb = new StringBuilder();
+        for (Region r : Region.values()) {
+            sb.append("(");
+            sb.append(r.ordinal());
+            sb.append(") ");
+            sb.append(r.name());
+            sb.append(" ");
+        }
+
+        return sb.toString();
+    }
+
     public static boolean isViableLetter(char c) {
-        Region result = fromCharacter(c);
-        return result != null;
+        return fromCharacter(c) != null;
     }
 }

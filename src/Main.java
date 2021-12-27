@@ -34,8 +34,6 @@ public class Main {
         ShopReader shopReader = new ShopReader(wb).init();
         MarketGenerator generator = new MarketGenerator();
 
-        //System.exit(69);
-
         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
         int choice;
 
@@ -53,9 +51,7 @@ public class Main {
             switch (choice) {
                 case 0 -> System.exit(0);
                 case 1 -> {
-                    System.out.println("Select a region: \n (P)aperkind, (D)usgar, (M)irrimam, Ba(Z)aar, (Y)ackrix, (S)hattered Island, " +
-                            "(U)underix, (O)rterix, (A)scensia, (B)aktix, (W)ortsmar, (K)roaka, (T)ralarry, (C)oar, (G)ranvidas, (F)lamka, " +
-                            "Dy(I)oist, G(R)yist, (N)yuist, P(H)oist, El(V)en Region");
+                    System.out.println("Select a region: " + Region.getOrdinals());
                     String input = consoleInput.readLine();
                     List<Region> regs = readRegionsFromInput(input);
                     System.out.println("Region(s) selected: " + Arrays.toString(regs.toArray()));
@@ -73,14 +69,26 @@ public class Main {
     }
 
     private static List<Region> readRegionsFromInput(String in) {
-        String processedIn = in.replace(", ", "").replace(",", "");
-        char[] inArr = processedIn.toCharArray();
-        List<Region> result = new ArrayList<>();
-        for (char c : inArr) {
-            if (Region.isViableLetter(c)) {
-                result.add(Region.fromCharacter(c));
-            }
+        String[] splitInput = splitAndSanitizeInput(in);
+        int[] convertedInput = convertInputArray(splitInput);
+        List<Region> result = new ArrayList<>(convertedInput.length);
+        for (int i : convertedInput) {
+            result.add(Region.fromOrdinal(i));
         }
         return result;
+    }
+
+    private static int[] convertInputArray(String[] splitInput) {
+        int[] result = new int[splitInput.length];
+        for (int i = 0; i < splitInput.length; i++) {
+            result[i] = Integer.parseInt(splitInput[i]);
+        }
+        return result;
+    }
+
+    private static String[] splitAndSanitizeInput(String in) {
+        String[] splitInput = in.split(",");
+        Arrays.setAll(splitInput, i -> splitInput[i].trim());
+        return splitInput;
     }
 }

@@ -22,6 +22,9 @@ public class StockReader {
         readStocks("id_Carving", Item.getNecklace());
         readStocks("id_StrangersList", Item.getStranger());
         readStocks("id_Wondrous", Item.getWonders());
+        readStocks("id_FeatherCloaks", Item.getFeatherCloaks());
+        readStocks("id_TickerParts", Item.getTickerParts());
+        readStocks("id_Rope", Item.getRope());
         return this;
     }
 
